@@ -1,3 +1,8 @@
+## 2.0.3
+
+* Added `childrenBody` property
+* 新增`childrenBody` 属性
+
 ## 2.0.2
 
 * Modify package name `configurable_expansion_tile` to `configurable_expansion_tile_null_safety`
