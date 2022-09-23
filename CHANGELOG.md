@@ -1,3 +1,7 @@
+## 3.1.1
+
+* doc update
+
 ## 3.1.0
 
 * remove `children` attribute,Please replace with `childrenBody`

@@ -156,6 +156,9 @@ class ConfigurableExpansionTileState extends State<ConfigurableExpansionTile> wi
   }
 
   void _handleTap() {
+    if(!widget.enableExpanded){
+      return;
+    }
     setState(() {
       _isExpanded = !_isExpanded;
       if (_isExpanded) {
