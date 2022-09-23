@@ -26,12 +26,9 @@ class MyWidget extends StatelessWidget {
     return ConfigurableExpansionTile(
       headerExpanded: Flexible(child: Center(child: Text("A Header Changed"))),
       header: Container(child: Center(child: Text("A Header"))),
-      children: [
-        Row(
-          children: <Widget>[Text("CHILD 1")],
-        ),
-        // + more params, see example !!
-      ],
+      childrenBody: Row(
+        children: <Widget>[Text("CHILD 1")],
+      ),
     );
   }
 }
