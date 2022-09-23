@@ -1,6 +1,6 @@
 name: configurable_expansion_tile_null_safety
 description: A Configurable Expansion Tile edited from the flutter material implementation that allows for customization
-version: 3.0.0
+version: 3.1.0
 homepage: https://github.com/mdddj/configurable_expansion_tile
 
 environment:

@@ -12,13 +12,12 @@ class ConfigurableExpansionTile extends StatefulWidget {
   /// Creates a a [Widget] with an optional [animatedWidgetPrecedingHeader] and/or
   /// [animatedWidgetFollowingHeader]. Optionally, the header can change on the
   /// expanded state by proving a [Widget] in [headerExpanded]. Colors can also
-  /// be specified for the animated transitions/states. [children] are revealed
+  /// be specified for the animated transitions/states. [childrenBody] are revealed
   /// when the expansion tile is expanded.
   const ConfigurableExpansionTile(
       {Key? key,
       this.headerBackgroundColorStart = Colors.transparent,
       this.onExpansionChanged,
-      this.children = const <Widget>[],
       this.initiallyExpanded = false,
       required this.header,
       this.animatedWidgetFollowingHeader,
@@ -35,7 +34,8 @@ class ConfigurableExpansionTile extends StatefulWidget {
       this.borderAnimationTween,
       this.animatedWidgetTurnTween,
       this.animatedWidgetTween,
-      this.childrenBody})
+      this.childrenBody,
+      this.enableExpanded = true})
       : super(key: key);
 
   /// Called when the tile expands or collapses.
@@ -45,11 +45,14 @@ class ConfigurableExpansionTile extends StatefulWidget {
   /// the value false.
   final ValueChanged<bool>? onExpansionChanged;
 
-  /// The widgets that are displayed when the tile expands.
+
+
+  /// Whether to enable&disable the expansion function
   ///
-  /// Typically [ListTile] widgets.
-  @Deprecated("use `childrenBody` instead.")
-  final List<Widget>? children;
+  /// Default is [true]
+  ///
+  /// If it is false, the expansion operation cannot be performed
+  final bool enableExpanded;
 
   /// The widgets that are displayed when the tile expands.
   final Widget? childrenBody;
@@ -62,7 +65,7 @@ class ConfigurableExpansionTile extends StatefulWidget {
   /// The [Color] the header will transition to on expand
   final Color? headerBackgroundColorEnd;
 
-  /// The [Color] of the background of the [children] when expanded
+  /// The [Color] of the background of the [childrenBody] when expanded
   final Color? expandedBackgroundColor;
 
   /// Specifies if the list tile is initially expanded (true) or collapsed (false, the default).
@@ -113,10 +116,10 @@ class ConfigurableExpansionTile extends StatefulWidget {
   static final Animatable<double> _easeOutTween = CurveTween(curve: Curves.easeOut);
 
   @override
-  _ConfigurableExpansionTileState createState() => _ConfigurableExpansionTileState();
+  ConfigurableExpansionTileState createState() => ConfigurableExpansionTileState();
 }
 
-class _ConfigurableExpansionTileState extends State<ConfigurableExpansionTile> with SingleTickerProviderStateMixin {
+class ConfigurableExpansionTileState extends State<ConfigurableExpansionTile> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _iconTurns;
   late Animation<double> _heightFactor;
@@ -230,7 +233,7 @@ class _ConfigurableExpansionTileState extends State<ConfigurableExpansionTile> w
       child: closed
           ? null
           : widget.childrenBody ??
-              Container(color: widget.expandedBackgroundColor ?? Colors.transparent, child: Column(children: widget.children ?? [])),
+              Container(color: widget.expandedBackgroundColor ?? Colors.transparent, child: SizedBox()),
     );
   }
 }

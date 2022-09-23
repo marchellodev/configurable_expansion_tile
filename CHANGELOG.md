@@ -1,3 +1,8 @@
+## 3.1.0
+
+* remove `children` attribute,Please replace with `childrenBody`
+* add `enableExpanded`attribute
+
 ## 3.0.0
 
 * upgrade to `Flutter 3.3.0`
