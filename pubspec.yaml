@@ -1,4 +1,4 @@
-name: rounded_expansion_tile
+name: configurable_expansion_tile
 description: A Configurable Expansion Tile edited from the flutter material implementation that allows for customization
 version: 3.1.1
 homepage: https://github.com/mdddj/configurable_expansion_tile
